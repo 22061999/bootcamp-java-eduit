@@ -7,6 +7,6 @@ public interface ManipularArray<T>{
 	void addLast(T element);
 	int size();
 	T removefirstElement();
-	void removeAll();
+	Object removeAll();
 	boolean booleanEmpty();
 }

@@ -1,57 +1,59 @@
 package practica.semanal5;
 
-
+@SuppressWarnings("unchecked")
 public class CollectionCustom<T> implements ManipularArray<T> {
 	
-	private  T[] arrayT;
+	private Object[] arrayT;
+	private int count = 0;
 
-
-
-	public CollectionCustom() {
+	public CollectionCustom(int tamañoArray) {
 		super();
-		this.arrayT = arrayT;
+		this.arrayT = (T[]) new Object[tamañoArray];
 	}
-
-
 
 	public void addFirst(T element) {
-
+		for(int i = 0; i <= count; i++) {
+			arrayT[count - i + 1] = arrayT[count - i];
+		}
+		arrayT[0] = element;
 	}
-
-
 
 	public void addLast(T element) {
-
-		arrayT[arrayT.length] = element;
+		arrayT[count] = element;
+		count += 1;
 	}
-
 
 
 	public int size() {
-		return arrayT.length;
+		return count;
 	}
-
-
 
 	public T removefirstElement() {
-		T element = arrayT[0];
+		T element = null;
 		for(int i = 0; i < arrayT.length; i++) {
-			arrayT[i] = arrayT[i+1];
+			element = (T) arrayT[0];
+		}
+		return (T) element;
+	}
+
+	public Object removeAll() {
+		T element = null;
+		for(int i = 0; i < arrayT.length; i++) {
+		if(arrayT[i] != null) {
+			arrayT[i]= element;
+			}else {
+				break;
+			}
 		}
 		
-		return element;
+	return element;
 	}
-
-
-
-	public void removeAll() {
-		// TODO Auto-generated method stub
-		
-	}
-
-
 
 	public boolean booleanEmpty() {
-		return arrayT.length == 0;
+		return arrayT.length != 0;
 	}
+
+	
+
+	
 }
